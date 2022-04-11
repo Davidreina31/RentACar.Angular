@@ -1,0 +1,15 @@
+<h1>Liste des voitures</h1>
+
+<ng-container *ngFor="let item of items">
+<br>
+<img src="{{item.imageUrl}}" width="650" height="350">
+<p>{{item.brand}}</p>
+<p>{{item.model}}</p>
+<p>{{item.type}}</p>
+<p>{{item.price}}€/jour</p>
+<br>
+<button (click)="bookThisCar(item.car_Id)">
+    Réserver !
+</button>
+<br>
+</ng-container>

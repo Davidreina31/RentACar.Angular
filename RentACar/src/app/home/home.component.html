@@ -1,0 +1,4 @@
+<div *ngFor="let item of items">
+    <h3>{{item.country.country_Name}}</h3>
+    <h5><a [routerLink]="['/desktop/' + item.desktop_Id]">{{item.city}}</a></h5>
+</div>
