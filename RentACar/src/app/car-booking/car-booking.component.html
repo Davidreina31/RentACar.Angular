@@ -1,4 +1,13 @@
 <body>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="bg-info" style="text-align: center; border: solid; border-color: red;">
+      <span class="material-icons">warning
+          <h1>Au plus vous réservez à l'avance, au plus vous profiterez de ristournes !</h1>
+          <h2>Vous avez droit à une ristourne de 5% par semaine d'avance jusqu'à atteindre une réduction maximale de 20%.</h2>
+          <h2>PS : pensez à indiquer votre dépôt de retour, pour ainsi encore économiser 10%!</h2>
+      </span>
+  </div>
+</header>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
@@ -48,14 +57,17 @@
               </div>
               <br>
               <br>
+              <p style="color: red;">{{errorMessage}}</p>
               <br>
               <br>
               <label>
-                <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Réserver !"
+                <input type="submit" class="btn btn-lg btn-success btn-block text-uppercase" value="Réserver !"
                   [disabled]="form.invalid">
               </label>
             </form>
-            
+            <br>
+            <button class="btn btn-lg btn-danger btn-block text-uppercase"
+            (click)="previousPage(currentCar.desktop_Id)">retour</button>
           </div>
         </div>
       </div>

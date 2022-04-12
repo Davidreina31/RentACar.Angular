@@ -22,6 +22,7 @@ export class CarBookingComponent implements OnInit {
   trip: Trip;
   currentCar: Car;
   allDesktops: Desktop[] = [];
+  errorMessage: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -67,9 +68,17 @@ export class CarBookingComponent implements OnInit {
       this.trip.desktop_Start_Id = this.currentCar.desktop_Id;
 
       this._tripService.create(this.trip).subscribe({
-        next: () => this._router.navigateByUrl("/home")
+        next: () => this._router.navigateByUrl("/home"),
+        error: (error) =>  {
+          this.errorMessage = error.error;
+          console.log(error.error)
+        } 
       })
     }
+  }
+
+  previousPage(id: string){
+    this._router.navigateByUrl("desktop/" + id);
   }
 
 

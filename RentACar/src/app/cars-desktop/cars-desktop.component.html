@@ -1,15 +1,34 @@
-<h1>Liste des voitures</h1>
+<h1 class="bg-primary" style="border: solid; text-align: center;">Liste des voitures du dépôt de {{desktop.city}}</h1>
+<div class="bg-info">
+    <h2>Voici la liste des voitures qu'à notre dépôt. Vous y verrez pour chaque voiture
+        son type ainsi que son prix journalier. Ce prix journalier sera par la suite
+        additionné au prix au km ou alors si il s'agit d'un forfait, au prix du forfait.</h2>
+</div>
 
-<ng-container *ngFor="let item of items">
+<button class="btn btn-lg btn-danger btn-block text-uppercase" (click)="goToHomePage()"
+            ><span class="material-icons">home</span></button>
 <br>
-<img src="{{item.imageUrl}}" width="650" height="350">
-<p>{{item.brand}}</p>
-<p>{{item.model}}</p>
-<p>{{item.type}}</p>
-<p>{{item.price}}€/jour</p>
 <br>
-<button (click)="bookThisCar(item.car_Id)">
-    Réserver !
-</button>
 <br>
-</ng-container>
+<div class="bg-warning">
+    <div class="row" *ngFor="let item of items">
+        <div style="background-color: white">
+            <div>
+                <br>
+                <div class="item">
+                    <img src="{{item.imageUrl}}" width="650" height="350">
+                    <h2>{{item.brand}}</h2>
+                    <h3>{{item.model}}</h3>
+                    <h3>{{item.type}}</h3>
+                    <p>{{item.price}}€/jour</p>
+                    <br>
+                    <button class="btn-success" (click)="bookThisCar(item.car_Id)">
+                        Réserver !
+                    </button>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
