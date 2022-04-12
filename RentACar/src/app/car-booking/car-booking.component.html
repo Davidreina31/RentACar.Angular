@@ -1,48 +1,74 @@
-<h3>{{currentCar.brand}}</h3>
-<h4>{{currentCar.model}}</h4>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">{{currentCar.brand}} {{currentCar.model}}</h5>
+            <form class="form_group" [formGroup]="form" (ngSubmit)="bookTrip()">
+              <div class="form-label-group">
+                <label for="firstName"></label>
+                <input type="text" class="form-control" placeholder="firstName" id="firstName" formControlName="firstName">
+              </div>
+              <div class="form-label-group">
+                <label for="lastName"></label>
+                <input type="text" class="form-control" placeholder="lastName" id="lastName" formControlName="lastName">
+              </div>
+              <div class="form-label-group">
+                <label for="email"></label>
+                <input type="email" id="email" class="form-control" placeholder="email" formControlName="email">
+              </div>
+              <br>
+              
+              <div class="form-label-group">
+              <mat-form-field class="form-label-group">
+                <mat-label class="form-label-group">Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date" formControlName="dateStart">
+                  <input matEndDate placeholder="End date" formControlName="dateEnd">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+            </div>
 
+              <br>
+              <div class="form-label-group">
+                <label for="desktopEnd"></label>
+                <select formControlName="desktopEnd" aria-placeholder="dépôt de retour">
+                  <option value="">Dépôt de retour</option>
+                  <ng-container *ngFor="let item of allDesktops">
+                  <option value="{{item.desktop_Id}}">{{item.city}}</option>
+                </ng-container>
+              </select>
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <label>
+                <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="Réserver !"
+                  [disabled]="form.invalid">
+              </label>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 
-<form class="form_group" [formGroup]="form" (ngSubmit)="bookTrip()">
-  <div class="form-label-group">
-    <label for="firstName"></label>
-    <input type="text" class="form-control" placeholder="firstName" id="firstName" formControlName="firstName">
-  </div>
-  <br>
-  <div class="form-label-group">
-    <label for="lastName"></label>
-    <input type="text" class="form-control" placeholder="lastName" id="lastName" formControlName="lastName">
-  </div>
-  <br>
-  <div class="form-label-group">
-    <label for="email"></label>
-    <input type="email" id="email" class="form-control" placeholder="email" formControlName="email">
-  </div>
-  <br>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" formControlName="dateStart">
-      <input matEndDate placeholder="End date" formControlName="dateEnd">
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
-
-  <br>
-  <div class="form-label-group">
-    <label for="desktopEnd"></label>
-    <select formControlName="desktopEnd" aria-placeholder="dépôt de retour">
-      <option value="">Dépôt de retour</option>
-      <ng-container *ngFor="let item of allDesktops">
-      <option value="{{item.desktop_Id}}">{{item.city}}</option>
-    </ng-container>
-  </select>
-  </div>
-  <br>
-  <label>
-    <input type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" value="M'inscrire"
-      [disabled]="form.invalid">
-  </label>
-</form>
+<script>
+  $(function() {
+    $('input[name="daterange"]').daterangepicker({
+      opens: 'left'
+    }, function(start, end, label) {
+      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+  });
+  </script>

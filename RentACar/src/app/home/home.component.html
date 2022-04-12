@@ -1,4 +1,36 @@
-<div *ngFor="let item of items">
-    <h3>{{item.country.country_Name}}</h3>
-    <h5><a [routerLink]="['/desktop/' + item.desktop_Id]">{{item.city}}</a></h5>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5"
+            src="https://static.moniteurautomobile.be/imgcontrol/images_tmp/clients/moniteur/c1440-d720/content/medias/images/news/37000/500/30/porsche-911-992__1_.jpg"
+            height="150" />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">RENT A CAR</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Numéro 1 en location de voitures</p>
+    </div>
+</header>
+<br>
+<div class="bg-info" style="text-align: center; border: solid; border-color: red;">
+    <span class="material-icons">warning
+        <h1>Ne manquez pas nos promos du moment !</h1>
+    </span>
+    <ng-container *ngFor="let package of packages">
+        <h3>{{package.desktop_Start.city}} - {{package.desktop_End.city}} pour seulement {{package.price}}€ ! </h3>
+    </ng-container>
 </div>
+
+<div class="row" *ngFor="let item of items">
+    <div class="column">
+        <img src="{{item.imageUrl}}" height="300" width="300">
+        <h2>{{item.country.country_Name}}</h2>
+        <h3><a [routerLink]="['/desktop/' + item.desktop_Id]">{{item.city}}</a></h3>
+    </div>
+</div>
+<br>

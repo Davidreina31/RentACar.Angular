@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Package } from '../models/Package';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class PackageService {
 
     private _url: string = "http://localhost:5050/api/package/";
