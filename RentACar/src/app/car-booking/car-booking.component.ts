@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Guid } from 'guid-typescript';
 import { Car } from '../models/Car';
 import { Desktop } from '../models/Desktop';
 import { Trip } from '../models/Trip';
@@ -58,6 +59,7 @@ export class CarBookingComponent implements OnInit {
   bookTrip(){
     if(this.form.valid){
       this.trip = new Trip();
+      this.trip.trip_Id = Guid.create().value;
       this.trip.client_FirstName = this.form.controls['firstName'].value;
       this.trip.client_LastName = this.form.controls['lastName'].value;
       this.trip.client_Email = this.form.controls['email'].value;
@@ -67,7 +69,8 @@ export class CarBookingComponent implements OnInit {
       this.trip.car_Id = this.carId;
       this.trip.car = this.currentCar;
       this.trip.desktop_Start_Id = this.currentCar.desktop_Id;
-      this.trip.createdOn 
+
+      console.log(this.trip);
 
       this._tripService.create(this.trip).subscribe({
         next: () => this._router.navigateByUrl("/bill/" + this.trip.trip_Id),
@@ -82,20 +85,4 @@ export class CarBookingComponent implements OnInit {
   previousPage(id: string){
     this._router.navigateByUrl("desktop/" + id);
   }
-
-  getTripId(email: string, dateStart: Date, dateEnd: Date){
-    this._tripService.getAll().subscribe(data => {
-      this.trips = data;
-      console.log(this.trips);
-      for(let i = 0; i < this.trips.length; i++){
-        if(this.trips[i].client_Email == email && this.trips[i].date_Start == dateStart && this.trips[i].date_End == dateEnd){
-          console.log(this.trips[i]);
-          return this.trips[i].trip_Id;
-        }
-      }
-    })
-  }
-
-
-
 }

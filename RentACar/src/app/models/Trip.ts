@@ -1,9 +1,10 @@
+import { Guid } from "guid-typescript";
 import { Car } from "./Car";
 import { Desktop } from "./Desktop";
 import { Package } from "./Package";
 
 export class Trip {
-    trip_Id: number;
+    trip_Id: Guid;
     client_FirstName: string;
     client_LastName: string;
     client_Email: string;
@@ -22,6 +23,4 @@ export class Trip {
     desktop_End?: Desktop;
     package_Id?: string;
     package: Package;
-
-    createdOn?: Date;
 }
