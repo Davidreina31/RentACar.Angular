@@ -22,4 +22,6 @@ export class Trip {
     desktop_End?: Desktop;
     package_Id?: string;
     package: Package;
+
+    createdOn?: Date;
 }

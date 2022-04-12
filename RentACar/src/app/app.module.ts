@@ -12,13 +12,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BillComponent } from './bill/bill.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       HomeComponent,
       CarsDesktopComponent,
-      CarBookingComponent
+      CarBookingComponent,
+      BillComponent
    ],
   imports: [
     BrowserModule,

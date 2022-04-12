@@ -20,6 +20,7 @@ export class CarBookingComponent implements OnInit {
   carId: string;
   form: FormGroup;
   trip: Trip;
+  trips: Trip[] = [];
   currentCar: Car;
   allDesktops: Desktop[] = [];
   errorMessage: string;
@@ -66,9 +67,10 @@ export class CarBookingComponent implements OnInit {
       this.trip.car_Id = this.carId;
       this.trip.car = this.currentCar;
       this.trip.desktop_Start_Id = this.currentCar.desktop_Id;
+      this.trip.createdOn 
 
       this._tripService.create(this.trip).subscribe({
-        next: () => this._router.navigateByUrl("/home"),
+        next: () => this._router.navigateByUrl("/bill/" + this.trip.trip_Id),
         error: (error) =>  {
           this.errorMessage = error.error;
           console.log(error.error)
@@ -79,6 +81,19 @@ export class CarBookingComponent implements OnInit {
 
   previousPage(id: string){
     this._router.navigateByUrl("desktop/" + id);
+  }
+
+  getTripId(email: string, dateStart: Date, dateEnd: Date){
+    this._tripService.getAll().subscribe(data => {
+      this.trips = data;
+      console.log(this.trips);
+      for(let i = 0; i < this.trips.length; i++){
+        if(this.trips[i].client_Email == email && this.trips[i].date_Start == dateStart && this.trips[i].date_End == dateEnd){
+          console.log(this.trips[i]);
+          return this.trips[i].trip_Id;
+        }
+      }
+    })
   }
 
 
