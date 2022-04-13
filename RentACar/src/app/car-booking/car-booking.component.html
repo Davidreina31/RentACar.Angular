@@ -20,11 +20,11 @@
             <form class="form_group" [formGroup]="form" (ngSubmit)="bookTrip()">
               <div class="form-label-group">
                 <label for="firstName"></label>
-                <input type="text" class="form-control" placeholder="firstName" id="firstName" formControlName="firstName">
+                <input type="text" class="form-control" placeholder="Prénom" id="firstName" formControlName="firstName">
               </div>
               <div class="form-label-group">
                 <label for="lastName"></label>
-                <input type="text" class="form-control" placeholder="lastName" id="lastName" formControlName="lastName">
+                <input type="text" class="form-control" placeholder="Nom" id="lastName" formControlName="lastName">
               </div>
               <div class="form-label-group">
                 <label for="email"></label>
@@ -34,7 +34,7 @@
               
               <div class="form-label-group">
               <mat-form-field class="form-label-group">
-                <mat-label class="form-label-group">Enter a date range</mat-label>
+                <mat-label class="form-label-group">Entrez deux dates</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
                   <input matStartDate placeholder="Start date" formControlName="dateStart">
                   <input matEndDate placeholder="End date" formControlName="dateEnd">

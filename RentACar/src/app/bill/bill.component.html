@@ -13,7 +13,7 @@
     <h2>Voiture :</h2>
     <h3>Marque : {{trip.car.brand}} </h3>
     <h3>Modèle : {{trip.car.model}} </h3>
-    <h3>Prix par jour: {{trip.car.price}}€ </h3>
+    <h3>Prix par jour: {{trip.car.price.toFixed(2)}}€ </h3>
     <h2>Dépôt de départ : {{trip.desktop_Start.city}} </h2>
     <ng-container *ngIf="trip.desktop_End != null || trip.desktop_End != undefined">
         <h2>Dépôt de retour : {{trip.desktop_End.city}} </h2>
@@ -23,7 +23,7 @@
         <h3>Limite de km: {{trip.package.km_Limit}}km </h3>
     </ng-container>
     <h3>Prix au km : {{trip.desktop_Start.country.km_Price}}€ </h3>
-    <h1>Prix total : {{trip.price}}€ </h1>
+    <h1>Prix total : {{trip.price.toFixed(2)}}€ </h1>
 
     <span class="material-icons">warning</span>
     <h2 style="color: orangered;">Ceci n'est pas le prix définitif de votre commande mais son minimum. Le prix total

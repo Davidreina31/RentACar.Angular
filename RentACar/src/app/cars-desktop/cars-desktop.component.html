@@ -20,7 +20,7 @@
                     <h2>{{item.brand}}</h2>
                     <h3>{{item.model}}</h3>
                     <h3>{{item.type}}</h3>
-                    <p>{{item.price}}€/jour</p>
+                    <p>{{item.price.toFixed(2)}}€/jour</p>
                     <br>
                     <button class="btn-success" (click)="bookThisCar(item.car_Id)">
                         Réserver !
