@@ -1,32 +1,34 @@
-<h1>Votre commande détailée : </h1>
+<div style="text-align: center;background-color: rgba(43, 186, 226, 0.436);">
+    <h1>Votre commande détailée : </h1>
 
-<h1>Numéro de commande : {{trip.trip_Id}} </h1>
+    <h1>Numéro de commande : {{trip.trip_Id}} </h1>
 
-<h2>Nom : {{trip.client_LastName}}</h2>
-<h2>Prénom : {{trip.client_FirstName}} </h2>
-<h2>Email : {{trip.client_Email}} </h2>
-<h2>Date de départ : {{trip.date_Start |date}} </h2>
-<h2>Date de retour : {{trip.date_End |date}} </h2>
-<h2>Remise : {{trip.discount *100}}% </h2>
-<h2>Amende : {{trip.penalty *100}}% </h2>
-<h2>Voiture :</h2>
-<h3>Marque : {{trip.car.brand}} </h3>
-<h3>Modèle : {{trip.car.model}} </h3>
-<h3>Prix par jour: {{trip.car.price}}€ </h3>
-<h2>Dépôt de départ : {{trip.desktop_Start.city}} </h2>
-<ng-container *ngIf="trip.desktop_End != null || trip.desktop_End != undefined">
-<h2>Dépôt de retour : {{trip.desktop_End.city}} </h2>
-</ng-container>
-<ng-container *ngIf="trip.isPackage">
-<h2>Prix du forfait : {{trip.package.price}}€ </h2>
-<h3>Limite de km: {{trip.package.km_Limit}}km </h3>
-</ng-container>
-<h3>Prix au km : {{trip.desktop_Start.country.km_Price}}€ </h3>
-<h1>Prix total : {{trip.price}}€ </h1>
+    <h2>Nom : {{trip.client_LastName}}</h2>
+    <h2>Prénom : {{trip.client_FirstName}} </h2>
+    <h2>Email : {{trip.client_Email}} </h2>
+    <h2>Date de départ : {{trip.date_Start |date}} </h2>
+    <h2>Date de retour : {{trip.date_End |date}} </h2>
+    <h2>Remise : {{trip.discount *100}}% </h2>
+    <h2>Amende : {{trip.penalty *100}}% </h2>
+    <h2>Voiture :</h2>
+    <h3>Marque : {{trip.car.brand}} </h3>
+    <h3>Modèle : {{trip.car.model}} </h3>
+    <h3>Prix par jour: {{trip.car.price}}€ </h3>
+    <h2>Dépôt de départ : {{trip.desktop_Start.city}} </h2>
+    <ng-container *ngIf="trip.desktop_End != null || trip.desktop_End != undefined">
+        <h2>Dépôt de retour : {{trip.desktop_End.city}} </h2>
+    </ng-container>
+    <ng-container *ngIf="trip.isPackage">
+        <h2>Prix du forfait : {{trip.package.price}}€ </h2>
+        <h3>Limite de km: {{trip.package.km_Limit}}km </h3>
+    </ng-container>
+    <h3>Prix au km : {{trip.desktop_Start.country.km_Price}}€ </h3>
+    <h1>Prix total : {{trip.price}}€ </h1>
 
-<span class="material-icons">warning</span>
-<h2 style="color: orangered;">Ceci n'est pas le prix définitif de votre commande mais son minimum. Le prix total sera calculé lors de votre retour au dépôt par un administrateur.</h2>
-<br>
-<br>
-<button class="btn btn-lg btn-danger btn-block text-uppercase"
-            (click)="goToHomePage()">Page d'accueil</button>
+    <span class="material-icons">warning</span>
+    <h2 style="color: orangered;">Ceci n'est pas le prix définitif de votre commande mais son minimum. Le prix total
+        sera calculé lors de votre retour au dépôt par un administrateur.</h2>
+    <br>
+    <br>
+    <button class="btn btn-lg btn-danger btn-block text-uppercase" (click)="goToHomePage()">Page d'accueil</button>
+</div>
