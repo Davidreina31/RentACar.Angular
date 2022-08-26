@@ -14,6 +14,22 @@
         </div>
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0">Numéro 1 en location de voitures</p>
+        <br>
+      <div *ngIf="!this._sessionService.isLogged()">
+        <button (click)="login()">se connecter</button>
+    </div>
+
+    <div *ngIf="this._sessionService.isLogged()">
+        <h3>Bienvenue {{user.userName}}</h3>
+        <br>
+        <ng-container *ngIf="isAdmin">
+        <button (click)="goToUsers()">Liste des utilisteurs</button>
+        </ng-container>
+        <br>
+        <br>
+        <button (click)="logout()">se déconnecter</button>
+    </div>
+
     </div>
 </header>
 <br>

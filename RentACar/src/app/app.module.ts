@@ -13,14 +13,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BillComponent } from './bill/bill.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { InterceptorService } from './services/interceptor.service';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
       HomeComponent,
       CarsDesktopComponent,
       CarBookingComponent,
-      BillComponent
+      BillComponent,
+      UsersComponent
    ],
   imports: [
     BrowserModule,
@@ -30,9 +34,18 @@ import { BillComponent } from './bill/bill.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthModule.forRoot({
+      domain: 'dev-50hpflw3.us.auth0.com',
+      clientId: 'tLd2K4Sgq6Ssv9wxddDzkKv2hbe4P6t6'
+    }),
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
